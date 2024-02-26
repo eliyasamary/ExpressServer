@@ -9,7 +9,7 @@ const retrieve = (id) => {
   return storage.retrieve(id);
 };
 
-const create = (donation) => {
+const tocreate = (donation) => {
   return storage.create(donation);
 };
 
@@ -24,7 +24,7 @@ const deletee = (id) => {
 module.exports = {
   find,
   retrieve,
-  create,
+  tocreate,
   update,
   deletee,
 };
