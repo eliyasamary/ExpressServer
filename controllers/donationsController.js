@@ -1,7 +1,7 @@
 const {
   find,
   retrieve,
-  create,
+  tocreate,
   update,
   deletee,
 } = require("../repositories/donationsRepository");
@@ -91,18 +91,13 @@ const createDonation = async (req, res) => {
       );
     }
 
-    const isExsistDonation = await retrieve(donation.id);
-    if (isExsistDonation.length != 0) {
-      throw new BadRequestError(
-        `Cannot create a new donation : donation with id ${donation.id} already exists.`
-      );
-    }
-    const newDonation = await create(donation);
+    const newDonation = await tocreate(donation);
     if (!newDonation || newDonation.length === 0) {
       throw new ServerError(
         "Encountered a problem - cannot create a new donation."
       );
     }
+
     const result = {
       status: 201,
       message: `Donation #${donation.id} created successfully !`,
