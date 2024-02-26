@@ -29,15 +29,7 @@ const checkVaildId = (id) => {
     id === "0"
   ) {
     return notVaild;
-  } else if (!isNumeric(id)) {
-    return notVaild;
-  } else {
-    return validId;
-  }
-};
-
-const isNumeric = (num) => {
-  return !isNaN(num);
+  } else return validId;
 };
 
 /***************************************************************************************
@@ -71,6 +63,7 @@ const getDonation = async (req, res) => {
     if (isOkId === notVaild) {
       throw new BadRequestError("Id not vaild.");
     }
+
     const donation = await retrieve(id);
     if (donation.length === 0 || !donation) {
       throw new NotFoundError(`Donation with id ${id} not found.`);
@@ -92,20 +85,12 @@ const getDonation = async (req, res) => {
 const createDonation = async (req, res) => {
   try {
     const { body: donation } = req;
-    if (
-      !donation.id ||
-      !donation.amount ||
-      !donation.donorName ||
-      !donation.location
-    ) {
+    if (!donation.amount || !donation.donorName || !donation.location) {
       throw new BadRequestError(
         "Cannot create a new donation : missing attributes."
       );
     }
-    const isOkId = checkVaildId(donation.id);
-    if (isOkId === notVaild) {
-      throw new BadRequestError("Cannot create a new donation : id not vaild.");
-    }
+
     const isExsistDonation = await retrieve(donation.id);
     if (isExsistDonation.length != 0) {
       throw new BadRequestError(
