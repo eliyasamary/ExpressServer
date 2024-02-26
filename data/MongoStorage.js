@@ -27,7 +27,7 @@ module.exports = class MongoStorage {
     return await this.Model.find();
   }
   async retrieve(id) {
-    return await this.Model.find({ id });
+    return await this.Model.findById(id);
   }
   async create(data) {
     const donation = await new this.Model(data);
@@ -35,9 +35,9 @@ module.exports = class MongoStorage {
     return donation;
   }
   async update(id, data) {
-    return await this.Model.updateOne({ id }, data);
+    return await this.Model.findByIdAndUpdate(id, data, { new: true });
   }
   async delete(id) {
-    return await this.Model.deleteOne({ id });
+    return await this.Model.findByIdAndDelete(id);
   }
 };
