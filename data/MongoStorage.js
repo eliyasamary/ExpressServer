@@ -21,23 +21,23 @@ module.exports = class MongoStorage {
   }
 
   /***************************************************************************************
- async functions
+ functions
  ***************************************************************************************/
-  async find() {
-    return await this.Model.find();
+  find() {
+    return this.Model.find();
   }
-  async retrieve(id) {
-    return await this.Model.findById(id);
+  retrieve(id) {
+    return this.Model.findById(id);
   }
-  async create(data) {
-    const donation = await new this.Model(data);
-    await donation.save();
+  create(data) {
+    const donation = new this.Model(data);
+    donation.save();
     return donation;
   }
-  async update(id, data) {
-    return await this.Model.findByIdAndUpdate(id, data, { new: true });
+  update(id, data) {
+    return this.Model.findByIdAndUpdate(id, data, { new: true });
   }
-  async delete(id) {
-    return await this.Model.findByIdAndDelete(id);
+  delete(id) {
+    return this.Model.findByIdAndDelete(id);
   }
 };
