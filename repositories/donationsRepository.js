@@ -1,10 +1,3 @@
-/***************************************************************************************
- * DONATIONS REPOSITORY
- 
- - import mongo storage for functions using
- - create a DonationsRepository class
- ***************************************************************************************/
-
 const MongoStorage = require("../data/MongoStorage");
 const storage = new MongoStorage("donation");
 

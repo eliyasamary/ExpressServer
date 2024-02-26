@@ -1,11 +1,3 @@
-/***************************************************************************************
- * DONATIONS ROUTER
- 
- - import controller functions
- - create an express router
- - routing each request (according to method and route) to the currect consroller function
- ***************************************************************************************/
-
 const {
   getDonations,
   getDonation,

@@ -1,10 +1,3 @@
-/***************************************************************************************
- * DONATIONS CONTROLLER
- 
- - importing the donations repository functions to handle the routes
- - using custom errors imported
- ***************************************************************************************/
-
 const {
   find,
   retrieve,

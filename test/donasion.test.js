@@ -1,10 +1,3 @@
-/* eslint-disable no-undef */
-/***************************************************************************************
- * TESTS
- 
- - test using jest
-***************************************************************************************/
-
 const request = require("supertest");
 const app = require("../server");
 const donationRepository = require("../repositories/donationsRepository");

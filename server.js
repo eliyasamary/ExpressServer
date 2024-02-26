@@ -1,10 +1,3 @@
-/***************************************************************************************
- * SERVER
- 
- - required modules for server creation using express
- - using imported donationsRouter for routing
- ***************************************************************************************/
-
 const express = require("express");
 const logger = require("morgan");
 const fs = require("fs");

@@ -1,9 +1,3 @@
-/***************************************************************************************
- * DONATIONS MODEL
- 
- - using mongoose to create a model for donations
- ***************************************************************************************/
-
 const { Schema, model } = require("mongoose");
 
 const donationsSchema = new Schema(
