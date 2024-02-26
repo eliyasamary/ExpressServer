@@ -65,14 +65,17 @@ const getDonation = async (req, res) => {
     }
 
     const donation = await retrieve(id);
+
     if (donation.length === 0 || !donation) {
       throw new NotFoundError(`Donation with id ${id} not found.`);
     }
+
     const result = {
       status: 200,
       message: "",
       data: donation,
     };
+
     res.status(result.status);
     res.json(result.message || result.data);
   } catch (error) {
@@ -100,7 +103,7 @@ const createDonation = async (req, res) => {
 
     const result = {
       status: 201,
-      message: `Donation #${donation.id} created successfully !`,
+      message: `Donation created successfully !`,
       data: newDonation,
     };
     res.status(result.status);
