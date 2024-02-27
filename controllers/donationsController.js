@@ -26,7 +26,8 @@ const checkVaildId = (id) => {
     id === "*" ||
     id === undefined ||
     id === 0 ||
-    id === "0"
+    id === "0" ||
+    id === ":id"
   ) {
     return notVaild;
   } else return validId;
