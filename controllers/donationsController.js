@@ -14,11 +14,7 @@ const {
 
 const { notVaild, validId } = require("../constants");
 
-/***************************************************************************************
-  Middelware
- ***************************************************************************************/
-
-// Checks whether the id is vaild
+// Middelware - Checks whether the id is vaild
 const checkVaildId = (id) => {
   if (
     id === null ||
@@ -27,15 +23,12 @@ const checkVaildId = (id) => {
     id === undefined ||
     id === 0 ||
     id === "0" ||
-    id === ":id"
+    id === ":id" ||
+    id.length < 24
   ) {
     return notVaild;
   } else return validId;
 };
-
-/***************************************************************************************
-  Functions
- ***************************************************************************************/
 
 // GET ALL DONASIONS
 const getDonations = async (req, res) => {
@@ -80,8 +73,12 @@ const getDonation = async (req, res) => {
     res.status(result.status);
     res.json(result.message || result.data);
   } catch (error) {
-    res.status(error.statusCode);
-    res.json({ message: error.message });
+    res.status(error.statusCode || 500);
+    if (error.message == "Cannot read properties of null (reading 'length')") {
+      res.json({ message: "Donation not found." });
+    } else {
+      res.json({ message: error.message || "Internal Error" });
+    }
   }
 };
 
@@ -150,8 +147,12 @@ const updateDonation = async (req, res) => {
     res.status(result.status);
     res.json(result.message || result.data);
   } catch (error) {
-    res.status(error.statusCode);
-    res.json({ message: error.message });
+    res.status(error.statusCode || 500);
+    if (error.message == "Cannot read properties of null (reading 'length')") {
+      res.json({ message: "Donation not found." });
+    } else {
+      res.json({ message: error.message || "Internal Error" });
+    }
   }
 };
 
@@ -179,8 +180,12 @@ const deleteDonation = async (req, res) => {
     res.status(result.status);
     res.json(result.message || result.data);
   } catch (error) {
-    res.status(error.statusCode);
-    res.json({ message: error.message });
+    res.status(error.statusCode || 500);
+    if (error.message == "Cannot read properties of null (reading 'length')") {
+      res.json({ message: "Donation not found." });
+    } else {
+      res.json({ message: error.message || "Internal Error" });
+    }
   }
 };
 
